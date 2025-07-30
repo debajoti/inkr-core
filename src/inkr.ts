@@ -1,28 +1,56 @@
 import { applyStyles } from "./ansi/formatter";
-import { BgColour, Colour, StyleState, UnderlineStyle, Weight } from "./utils/types";
+import { defaultConfig, InkrConfig, InkrStyles } from "./config/default";
+import { defColour, RGBColour, StyleState, UnderlineStyle, Weight } from "./utils/types";
 
-export class inkr {
+export class Inkr {
+    private static instance: Inkr;
     private state: StyleState = this.resetState();
-    colour(colour: Colour): this {
+    private config: InkrConfig = { ...defaultConfig }
+
+    public static getInstance(): Inkr {
+        if (!Inkr.instance) {
+            Inkr.instance = new Inkr();
+        }
+        return Inkr.instance;
+    }
+
+    public configure(userStyles: Partial<InkrStyles>): void {
+        this.config.defaultStyle = { ...this.config.defaultStyle, ...userStyles };
+    }
+
+    public resetConfig(): void {
+        this.config = { ...defaultConfig };
+    }
+
+    public colour(colour: defColour | RGBColour): this {
         this.state.colour = colour;
         return this;
     }
-    bgColour(colour: BgColour): this {
+
+    public bgColour(colour: defColour | RGBColour): this {
         this.state.bgColour = colour;
         return this;
     }
-    weight(weight: Weight): this {
+
+    public weight(weight: Weight): this {
         this.state.weight = weight;
         return this;
     }
-    underline(underline: UnderlineStyle): this {
+
+    public underline(underline: UnderlineStyle): this {
         this.state.underline = underline;
         return this;
     }
 
-    text(content: string): string {
-        console.log(this)
-        const result = applyStyles(content, this.state);
+    public text(content: string): string {
+        const finalState: StyleState = {
+            colour: this.config.defaultStyle?.colour ?? this.state.colour,
+            bgColour: this.config.defaultStyle?.bgColour ?? this.state.bgColour,
+            weight: this.config.defaultStyle?.weight ?? this.state.weight,
+            underline: this.config.defaultStyle?.underline ?? this.state.underline
+        }
+
+        const result = applyStyles(content, finalState);
         this.state = this.resetState();
         return result;
     }
@@ -34,5 +62,9 @@ export class inkr {
             weight: null,
             underline: null,
         }
+    }
+
+    public getConfig(): InkrConfig {
+        return this.config;
     }
 }

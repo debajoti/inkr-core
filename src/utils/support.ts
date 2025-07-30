@@ -1,4 +1,5 @@
-import { config } from "../config/default";
+import { defaultConfig } from "../config/default";
+import { getColourSupportMap } from "../ansi/styles"
 
 export enum ColourSupportLevel {
     none = 0,
@@ -35,7 +36,7 @@ export function getColourSupport(): ColourSupportLevel {
     if (cachedTerminalSupport === null) {
         cachedTerminalSupport = detectTerminalSupport();
     }
-    const userPreference = config.preferredColourSupport;
+    const userPreference = getColourSupportMap(defaultConfig.preferredColourSupport);
     if (userPreference !== undefined && userPreference <= cachedTerminalSupport) return userPreference;
     return cachedTerminalSupport
 }

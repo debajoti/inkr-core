@@ -1,4 +1,5 @@
-import { defColour, RGBColour, UnderlineStyle, Weight } from "../utils/types";
+import { ColourSupportLevel } from "../utils/support";
+import { ColourSupportType, defColour, RGBColour, UnderlineStyle, Weight } from "../utils/types";
 
 export function getTextColourCode(colour: defColour): string {
     const map: Record<defColour, string> = {
@@ -12,6 +13,16 @@ export function getTextColourCode(colour: defColour): string {
         white: "37",
     };
     return map[colour] ?? "";
+}
+
+export function getColourSupportMap(type: ColourSupportType): ColourSupportLevel {
+    const map: Record<ColourSupportType, ColourSupportLevel> = {
+        none: ColourSupportLevel.none,
+        basic: ColourSupportLevel.basic,
+        extended: ColourSupportLevel.extended,
+        trueColour: ColourSupportLevel.trueColour,
+    };
+    return map[type] ?? ColourSupportLevel.trueColour;
 }
 
 export const colourMap: { colour: defColour; rgb: RGBColour }[] = [
