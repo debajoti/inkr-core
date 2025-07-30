@@ -1,5 +1,7 @@
-export function getTextColourCode(colour: string): string {
-    const map: Record<string, string> = {
+import { defColour, RGBColour, UnderlineStyle, Weight } from "../utils/types";
+
+export function getTextColourCode(colour: defColour): string {
+    const map: Record<defColour, string> = {
         black: "30",
         red: "31",
         green: "32",
@@ -12,8 +14,19 @@ export function getTextColourCode(colour: string): string {
     return map[colour] ?? "";
 }
 
-export function getBgColourCode(colour: string): string {
-    const map: Record<string, string> = {
+export const colourMap: { colour: defColour; rgb: RGBColour }[] = [
+    { colour: "black", rgb: [0, 0, 0], },
+    { colour: "red", rgb: [255, 0, 0], },
+    { colour: "green", rgb: [0, 255, 0], },
+    { colour: "yellow", rgb: [255, 255, 0], },
+    { colour: "blue", rgb: [0, 0, 255], },
+    { colour: "magenta", rgb: [255, 0, 255], },
+    { colour: "cyan", rgb: [0, 255, 255], },
+    { colour: "white", rgb: [255, 255, 255], },
+] as const;
+
+export function getBgColourCode(colour: defColour): string {
+    const map: Record<defColour, string> = {
         black: "40",
         red: "41",
         green: "42",
@@ -26,8 +39,8 @@ export function getBgColourCode(colour: string): string {
     return map[colour] ?? "";
 }
 
-export function getWeightCode(style: string): string {
-    const map: Record<string, string> = {
+export function getWeightCode(style: Weight): string {
+    const map: Record<Weight, string> = {
         dimmed: "2",
         normal: "22",
         bold: "1",
@@ -35,8 +48,8 @@ export function getWeightCode(style: string): string {
     return map[style] ?? "";
 }
 
-export function getUnderlineCode(style: string): string {
-    const map: Record<string, string> = {
+export function getUnderlineCode(style: UnderlineStyle): string {
+    const map: Record<UnderlineStyle, string> = {
         solid: "4",
         double: "21",
         dashed: "4:3",

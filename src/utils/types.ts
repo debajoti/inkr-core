@@ -1,13 +1,12 @@
-export type defColour = "red" | "green" | "blue" | "yellow" | "cyan" | "magenta" | "white" | "gray";
+export type defColour = "red" | "green" | "blue" | "yellow" | "cyan" | "magenta" | "white" | "black";
 export type RGBColour = [number, number, number];
-export type ColourInput = defColour | RGBColour;
 
 export type Weight = "dimmed" | "normal" | "bold";
 export type UnderlineStyle = "solid" | "dashed" | "dotted" | "double";
 
 export interface StyleState {
-    colour: ColourInput | null;
-    bgColour: ColourInput | null;
+    colour: defColour | RGBColour | null;
+    bgColour: defColour | RGBColour | null;
     weight: Weight | null;
     underline: UnderlineStyle | null;
 }

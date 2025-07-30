@@ -4,8 +4,8 @@
   "description": "CLI colorizing tool for styled terminal output",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "type": "module",
   "scripts": {
+    "test": "mocha -r ts-node/register \"tests/**/*.ts\"",
     "dev": "nodemon src/index.ts",
     "start": "node src/index.ts",
     "prepublishOnly": "npm run build",
