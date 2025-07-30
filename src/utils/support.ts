@@ -12,10 +12,6 @@ let cachedTerminalSupport: ColourSupportLevel | null = null;
 export function detectTerminalSupport(): ColourSupportLevel {
     const env = process.env;
 
-    if ("NO_COLOR" in env || env.FORCE_COLOR === "0") {
-        return ColourSupportLevel.none;
-    }
-
     if (env.COLORTERM === "truecolor" || env.COLORTERM === "24bit") {
         return ColourSupportLevel.trueColour;
     }
@@ -28,6 +24,10 @@ export function detectTerminalSupport(): ColourSupportLevel {
         return ColourSupportLevel.basic;
     }
 
+    if ("NO_COLOR" in env || env.FORCE_COLOR === "0") {
+        return ColourSupportLevel.none;
+    }
+
     return ColourSupportLevel.none;
 }
 
@@ -35,11 +35,8 @@ export function getColourSupport(): ColourSupportLevel {
     if (cachedTerminalSupport === null) {
         cachedTerminalSupport = detectTerminalSupport();
     }
-
     const userPreference = config.preferredColourSupport;
-
     if (userPreference !== undefined && userPreference <= cachedTerminalSupport) return userPreference;
-
     return cachedTerminalSupport
 }
 
