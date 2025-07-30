@@ -1,7 +1,5 @@
-import { applyStyles } from "./ansi/formatter";
 import { defaultConfig, InkrConfig, InkrStyles } from "./config/default";
 import { InkrBuilder } from "./inkrBuilder";
-import { defColour, RGBColour, StyleState, UnderlineStyle, Weight } from "./utils/types";
 
 export class Inkr {
     private static instance: Inkr;

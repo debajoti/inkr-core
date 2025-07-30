@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import inkr from '../src/index';
 import { describe, it } from 'node:test';
 
-describe('Weight Feature', () => {
+describe('Inkr Feature', () => {
     it('should apply bold style', () => {
         const boldText = inkr.style().weight('bold').text("");
         expect(boldText).to.satisfy((output: string) => {
