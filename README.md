@@ -16,7 +16,7 @@ A lightweight and flexible CLI colourizing tool for styled terminal output with 
 ## Installation
 
 ```bash
-npm install inkr-core
+npm install inkr-cli
 ```
 
 ## Basic Inline Usage

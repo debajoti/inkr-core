@@ -1,5 +1,5 @@
 {
-  "name": "inkr-core",
+  "name": "inkr-cli",
   "version": "0.1.0",
   "description": "CLI colorizing tool for styled terminal output",
   "main": "dist/index.js",
