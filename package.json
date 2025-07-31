@@ -23,7 +23,7 @@
     "inkr"
   ],
   "author": "joti.deb",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/chai": "^5.2.2",
     "@types/node": "^24.0.10",

@@ -169,4 +169,4 @@ inkr automatically detects your terminal's colour support level and adjusts outp
 
 ## License
 
-ISC
+MIT License
