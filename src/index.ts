@@ -1,4 +1,3 @@
-
 import Inkr from "./inkr";
 
 const inkr = Inkr.getInstance();

@@ -1,0 +1,39 @@
+# Source
+src/
+_example_/
+
+# Tests
+tests/
+*.test.ts
+tsconfig.test.json
+
+# Configuration files
+.gitignore
+.npmrc
+.editorconfig
+.eslintrc*
+.prettierrc*
+.vscode/
+
+# TypeScript configuration
+tsconfig.json
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Development files
+nodemon.json
+*.log
+*.tgz
+
+# Build artifacts
+dist-test/
+coverage/
+.nyc_output/
+
+# Environment
+.env*
+.env.local
+.env.*.local

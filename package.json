@@ -8,11 +8,19 @@
     "test": "NODE_ENV=test mocha -r ts-node/register/transpile-only -p tsconfig.test.json --no-timeout --reporter-options maxDiffSize=0,showTestDuration=true,testListEmit=true \"tests/**/*.ts\"",
     "dev": "nodemon src/index.ts",
     "start": "node src/index.ts",
+    "example": "nodemon _example_/javascript/usecases.ts",
     "prepublishOnly": "npm run build",
     "build": "npx tsc"
   },
   "files": [
     "dist/**/*"
+  ],
+  "keywords": [
+    "terminal",
+    "style",
+    "colour",
+    "sdk",
+    "inkr"
   ],
   "author": "joti.deb",
   "license": "ISC",
@@ -24,5 +32,8 @@
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=16"
   }
 }
