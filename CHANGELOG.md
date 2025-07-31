@@ -1,3 +1,15 @@
+## [0.1.0] - [31.07.2025]
+
+### Added
+
+- Added the default config to colour palette design
+- Crafted the InkrBuilder for isolated state class with singleton pattern for single instance of inkr class.
+- Created all the test suites for the functionality unit test.
+
+### Fix
+
+- Resolved the colour resolver fallback system for the compatibility & support for low end devices (Such that doesn't support the trucolour then fallback to ANSI 256 etc.)
+
 ## [0.1.0] - [30.07.2025]
 
 ### Added

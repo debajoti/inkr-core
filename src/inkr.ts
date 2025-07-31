@@ -1,7 +1,7 @@
 import { defaultConfig, InkrConfig, InkrStyles } from "./config/default";
 import { InkrBuilder } from "./inkrBuilder";
 
-export class Inkr {
+export default class Inkr {
     private static instance: Inkr;
     private config: InkrConfig = { ...defaultConfig }
 
@@ -17,7 +17,15 @@ export class Inkr {
     }
 
     public resetConfig(): void {
-        this.config = { ...defaultConfig };
+        this.config = {
+            preferredColourSupport: "trueColour",
+            defaultStyle: {
+                colour: null,
+                bgColour: null,
+                weight: null,
+                underline: null
+            }
+        };
     }
 
     public getConfig(): InkrConfig {

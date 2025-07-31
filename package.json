@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "mocha -r ts-node/register \"tests/**/*.ts\"",
+    "test": "NODE_ENV=test mocha -r ts-node/register/transpile-only -p tsconfig.test.json --no-timeout --reporter-options maxDiffSize=0,showTestDuration=true,testListEmit=true \"tests/**/*.ts\"",
     "dev": "nodemon src/index.ts",
     "start": "node src/index.ts",
     "prepublishOnly": "npm run build",
