@@ -1,9 +1,9 @@
 {
   "name": "inkr-cli",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "CLI colorizing tool for styled terminal output",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "scripts": {
     "test": "NODE_ENV=test mocha -r ts-node/register/transpile-only -p tsconfig.test.json --no-timeout --reporter-options maxDiffSize=0,showTestDuration=true,testListEmit=true \"tests/**/*.ts\"",
     "dev": "nodemon src/index.ts",
