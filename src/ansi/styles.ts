@@ -1,5 +1,5 @@
-import { ColourSupportLevel } from "../utils/support";
-import { ColourSupportType, defColour, RGBColour, UnderlineStyle, Weight } from "../utils/types";
+import { ColourSupportLevel } from "../utils/support.js";
+import { ColourSupportType, defColour, RGBColour, UnderlineStyle, Weight } from "../utils/types.js";
 
 export function getTextColourCode(colour: defColour): string {
     const map: Record<defColour, string> = {

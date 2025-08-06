@@ -1,6 +1,6 @@
-import { StyleState } from "../utils/types";
-import { resolveColour } from "./colourResolver";
-import { getBgColourCode, getTextColourCode, getUnderlineCode, getWeightCode } from "./styles";
+import { StyleState } from "../utils/types.js";
+import { resolveColour } from "./colourResolver.js";
+import { getBgColourCode, getTextColourCode, getUnderlineCode, getWeightCode } from "./styles.js";
 
 export function applyStyles(text: string, style: StyleState): string {
     let prefix = "\x1b[";

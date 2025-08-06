@@ -1,11 +1,11 @@
-import { applyStyles } from "./ansi/formatter";
-import { InkrConfig } from "./config/default";
-import { defColour, RGBColour, StyleState, UnderlineStyle, Weight } from "./utils/types";
+import { applyStyles } from "./ansi/formatter.js";
+import { InkrConfig } from "./config/default.js";
+import { defColour, RGBColour, StyleState, UnderlineStyle, Weight } from "./utils/types.js";
 
 export class InkrBuilder {
     private state: StyleState;
 
-    constructor(private config: InkrConfig) {
+    constructor(private readonly config: Readonly<InkrConfig>) {
         this.state = {
             colour: config.defaultStyle?.colour ?? null,
             bgColour: config.defaultStyle?.bgColour ?? null,

@@ -1,6 +1,6 @@
-import { ColourSupportLevel, getColourSupport } from "../utils/support";
-import { defColour, RGBColour } from "../utils/types";
-import { colourMap, getBgColourCode, getTextColourCode } from "./styles";
+import { ColourSupportLevel, getColourSupport } from "../utils/support.js";
+import { defColour, RGBColour } from "../utils/types.js";
+import { colourMap, getBgColourCode, getTextColourCode } from "./styles.js";
 
 export function RGBtoANSI256(input: RGBColour) {
     const [r, g, b] = input;

@@ -1,5 +1,5 @@
-import { defaultConfig } from "../config/default";
-import { getColourSupportMap } from "../ansi/styles"
+import { defaultConfig } from "../config/default.js";
+import { getColourSupportMap } from "../ansi/styles.js"
 
 export enum ColourSupportLevel {
     none = 0,

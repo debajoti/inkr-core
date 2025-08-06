@@ -1,9 +1,11 @@
-import { defaultConfig, InkrConfig, InkrStyles } from "./config/default";
-import { InkrBuilder } from "./inkrBuilder";
+import { defaultConfig, InkrConfig, InkrStyles } from "./config/default.js";
+import { InkrBuilder } from "./inkrBuilder.js";
 
 export default class Inkr {
     private static instance: Inkr;
     private config: InkrConfig = { ...defaultConfig }
+
+    private constructor() { };
 
     public static getInstance(): Inkr {
         if (!Inkr.instance) {
@@ -12,11 +14,12 @@ export default class Inkr {
         return Inkr.instance;
     }
 
-    public configure(userStyles: Partial<InkrStyles>): void {
+    public configure(userStyles: Partial<InkrStyles>): this {
         this.config.defaultStyle = { ...this.config.defaultStyle, ...userStyles };
+        return this;
     }
 
-    public resetConfig(): void {
+    public resetConfig(): this {
         this.config = {
             preferredColourSupport: "trueColour",
             defaultStyle: {
@@ -26,6 +29,7 @@ export default class Inkr {
                 underline: null
             }
         };
+        return this;
     }
 
     public getConfig(): InkrConfig {
@@ -33,7 +37,10 @@ export default class Inkr {
     }
 
     public style(): InkrBuilder {
-        const configCopy: InkrConfig = JSON.parse(JSON.stringify(this.config));
+        const configCopy: InkrConfig = {
+            preferredColourSupport: this.config.preferredColourSupport,
+            defaultStyle: { ...this.config.defaultStyle }
+        };
         return new InkrBuilder(configCopy);
     }
 }

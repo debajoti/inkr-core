@@ -1,4 +1,4 @@
-import { ColourSupportType, defColour, RGBColour, UnderlineStyle, Weight } from '../utils/types'
+import { ColourSupportType, defColour, RGBColour, UnderlineStyle, Weight } from '../utils/types.js'
 
 export interface InkrStyles {
     colour?: defColour | RGBColour | null;
