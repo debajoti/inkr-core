@@ -1,172 +1,86 @@
-# inkr
+# inkr-core
 
-A lightweight and flexible CLI colourizing tool for styled terminal output with TypeScript support.
+**inkr-core** is a zero-dependency, TypeScript-first library for richly stylized, colourized terminal output. Designed for clarity, flexibility, and performance.
 
 ## Features
 
-- 🎨 3/4-bit Basic colours, 8bit colours (ANSI256) and true colour (RGB) support
-- 🖌️ Background colours
-- 💪 Text weights (bold, dim)
-- ✍️ Multiple underline styles
-- ⚡ Chainable API
-- 🔄 Automatic terminal colour support detection
-- 📦 Zero dependencies
-- 🚀 TypeScript support
+- Advanced colour support: 16-colour, 256-colour (ANSI), and true RGB.
+- Foreground and background styling, including custom RGB arrays.
+- Text weights (bold, dim) and underline styles (single, double).
+- Intuitive, chainable API for style composition.
+- Automatic terminal colour detection.
+- Reusable, themeable style definitions.
+- Pure TypeScript with no external dependencies.
 
 ## Installation
 
 ```bash
-npm install inkr-cli
+npm install inkr-core
 ```
 
-## Basic Inline Usage
+## Usage
 
 ```typescript
 import inkr from "inkr";
 
-// Basic colours
-console.log(inkr.style().colour("red").text("This is red text"));
-console.log(inkr.style().colour("blue").text("This is blue text"));
+// Simple usage
+console.log(inkr.style().colour("red").text("Red text"));
 
-// Background colours
-console.log(
-  inkr.style().bgColour("yellow").text("Text with yellow background")
-);
-
-// Combining foreground and background
+// Background and combined styles
 console.log(
   inkr
     .style()
     .colour("white")
     .bgColour("blue")
-    .text("White text on blue background")
-);
-```
-
-## Text Styling
-
-```typescript
-// Bold text
-console.log(inkr.style().weight("bold").text("Bold text"));
-
-// Underlined text
-console.log(inkr.style().underline("single").text("Underlined text"));
-
-// Combining multiple styles
-console.log(
-  inkr
-    .style()
-    .colour("red")
-    .bgColour("white")
     .weight("bold")
-    .underline("double")
-    .text("Multi-styled text")
+    .underline("single")
+    .text("Styled text")
 );
+
+// RGB colours
+console.log(inkr.style().colour([255, 128, 0]).text("Orange RGB text"));
 ```
 
-## RGB colours
+### Reusable Theme-Based Styles
 
 ```typescript
-// Custom RGB colours
-console.log(inkr.style().colour([255, 128, 0]).text("Custom orange text"));
+const error = inkr.style().colour("red").weight("bold");
+console.log(error.text("Error: Operation failed"));
 
-// Custom RGB background
-console.log(
-  inkr.style().bgColour([100, 200, 150]).text("Text with custom background")
-);
+// another way
+const success = inkr
+  .configure({
+    colour: "green",
+    weight: "bold",
+  })
+  .style();
+console.log(success.text("Server is running on port:8000"));
 ```
 
-## Creating Reusable Theme-Styles
-
-You can create reusable styles for consistent formatting:
-
-```typescript
-// Define your styles
-const errorStyle = inkr.style().colour("red").weight("bold");
-const warnStyle = inkr.style().colour("yellow");
-const successStyle = inkr.style().colour("green");
-
-// Use them throughout your application
-console.log(errorStyle.text("Error: Operation failed"));
-console.log(warnStyle.text("Warning: Disk space low"));
-console.log(successStyle.text("Success: Data saved"));
-```
-
-## Chaining Multiple Outputs
+### Chained Outputs
 
 ```typescript
 console.log(
   inkr.style().colour("red").text("Error: ") +
-    inkr.style().colour("yellow").text("Something went wrong!")
+    inkr.style().colour("yellow").text("Details here.")
 );
 ```
 
-## API Reference
+## API Summary
 
-### Colours
+| Method             | Function                                          |
+| :----------------- | :------------------------------------------------ |
+| `style()`          | Start a new style chain                           |
+| `colour(value)`    | Set text colour (name or [r,g,b] array)           |
+| `bgColour(value)`  | Set background colour (name or [r,g,b] array)     |
+| `weight(value)`    | Set text weight: `'bold'`, `'dim'`, `'normal'`    |
+| `underline(value)` | Apply underline: `'single'`, `'double'`, `'none'` |
+| `text(content)`    | Apply styles to a string                          |
 
-Available basic colours:
+inkr-core ensures beautiful output, adapts to your terminal, and keeps your CLI code elegant.
 
-- black
-- red
-- green
-- yellow
-- blue
-- magenta
-- cyan
-- white
-- gray
-- [r,g,b] : Array
+## Supportibility
 
-### Text Weights
+- node >= 18
 
-- 'bold'
-- 'dim'
-- 'normal'
-
-### Underline Styles
-
-- 'single'
-- 'double'
-- 'none'
-
-### Methods
-
-#### `style()`
-
-Creates a new style builder instance.
-
-#### `colour(value)`
-
-Sets the text colour. Accepts:
-
-- Basic colour name (string)
-- RGB Array `[ r: number, g: number, b: number ]`
-
-#### `bgColour(value)`
-
-Sets the background colour. Accepts same values as `colour()`.
-
-#### `weight(value)`
-
-Sets the text weight ('bold', 'dim', 'normal').
-
-#### `underline(value)`
-
-Sets the underline style ('single', 'double', 'none').
-
-#### `text(content)`
-
-Applies all styles to the provided text and returns the formatted string.
-
-## Terminal Compatibility
-
-inkr automatically detects your terminal's colour support level and adjusts output accordingly:
-
-- True colour (16 million colours)
-- 256 colours
-- Basic (16 colours)
-
-## License
-
-MIT License
+**License:** MIT
