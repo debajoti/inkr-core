@@ -1,3 +1,5 @@
+<img width="1000" height="250" alt="Untitled design (4)" src="https://github.com/user-attachments/assets/52470c0d-1b2f-4f66-b9ac-2f058fafdcec" />
+
 # inkr-core
 
 **inkr-core** is a zero-dependency, TypeScript-first library for richly stylized, colourized terminal output. Designed for clarity, flexibility, and performance.
