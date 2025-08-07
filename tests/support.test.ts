@@ -1,5 +1,5 @@
 import { afterEach, describe, it } from "node:test";
-import { _resetColorSupportForTests, ColourSupportLevel, detectTerminalSupport, getColourSupport } from "../src/utils/support";
+import { _resetColorSupportForTests, ColourSupportLevel, detectTerminalSupport, getColourSupport } from "../src/utils/support.ts";
 import { expect } from "chai";
 
 

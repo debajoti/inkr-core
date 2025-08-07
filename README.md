@@ -84,6 +84,6 @@ inkr-core ensures beautiful output, adapts to your terminal, and keeps your CLI 
 ## Supportibility
 
 - node >= 18
-- Only compatible with terminal colours
+- Compatible with terminal colours & Browser Developer Console(ANSI)
 
 **License:** MIT

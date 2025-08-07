@@ -9,9 +9,11 @@ export interface InkrStyles {
 export interface InkrConfig {
     preferredColourSupport?: ColourSupportType;
     defaultStyle?: InkrStyles
+    isBrowser?: boolean
 }
 
 export const defaultConfig: Required<InkrConfig> = {
     preferredColourSupport: "trueColour",
-    defaultStyle: {}
+    defaultStyle: {},
+    isBrowser: typeof window !== "undefined" && typeof document !== "undefined",
 }

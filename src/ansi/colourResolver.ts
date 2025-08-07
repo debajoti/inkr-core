@@ -29,7 +29,18 @@ export function RGBtoBasic(rgb: RGBColour, isBg: boolean): string {
     return isBg ? getBgColourCode(closest.colour) : getTextColourCode(closest.colour);
 }
 
-export function resolveColour(colour: defColour | RGBColour, isBg = false): string {
+export function resolveColour(colour: defColour | RGBColour, isBg = false, isBrowser: boolean): string {
+    if (isBrowser) {
+        const base = isBg ? 48 : 38;
+
+        if (Array.isArray(colour)) {
+            const [r, g, b] = colour;
+            return `${base};2;${r};${g};${b}`;
+        }
+
+        return isBg ? getBgColourCode(colour) : getTextColourCode(colour);
+    }
+
     const support = getColourSupport();
     const base = isBg ? 48 : 38;
 

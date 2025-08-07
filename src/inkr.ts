@@ -5,7 +5,9 @@ export default class Inkr {
     private static instance: Inkr;
     private config: InkrConfig = { ...defaultConfig }
 
-    private constructor() { };
+    private constructor() {
+        this.config.isBrowser = typeof window !== "undefined" && typeof document !== "undefined";
+    };
 
     public static getInstance(): Inkr {
         if (!Inkr.instance) {
@@ -39,7 +41,8 @@ export default class Inkr {
     public style(): InkrBuilder {
         const configCopy: InkrConfig = {
             preferredColourSupport: this.config.preferredColourSupport,
-            defaultStyle: { ...this.config.defaultStyle }
+            defaultStyle: { ...this.config.defaultStyle },
+            isBrowser: this.config.isBrowser
         };
         return new InkrBuilder(configCopy);
     }
