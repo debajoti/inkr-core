@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import inkr from '../src/index';
+import inkr from '../src/index.ts';
 import { describe, it } from 'node:test';
 
 describe('Weight Feature', () => {

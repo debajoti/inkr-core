@@ -36,12 +36,12 @@ export class InkrBuilder {
 
     public text(content: string): string {
         const finalState: StyleState = {
-            colour: this.config.defaultStyle?.colour ?? this.state.colour,
-            bgColour: this.config.defaultStyle?.bgColour ?? this.state.bgColour,
-            weight: this.config.defaultStyle?.weight ?? this.state.weight,
-            underline: this.config.defaultStyle?.underline ?? this.state.underline
+            colour: this.state.colour ?? this.config.defaultStyle?.colour ?? null,
+            bgColour: this.state.bgColour ?? this.config.defaultStyle?.bgColour ?? null,
+            weight: this.state.weight ?? this.config.defaultStyle?.weight ?? null,
+            underline: this.state.underline ?? this.config.defaultStyle?.underline ?? null,
         }
-        const result = applyStyles(content, finalState);
+        const result = applyStyles(content, finalState, this.config.isBrowser ?? false);
         return result;
     }
 
